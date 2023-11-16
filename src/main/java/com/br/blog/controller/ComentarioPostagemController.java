@@ -22,8 +22,8 @@ public class ComentarioPostagemController {
     }
 
     @GetMapping
-    public  ResponseEntity<List<ComentarioPostagemDTO>> buscarTodosAtivos(){
-        return ResponseEntity.ok(comentarioPostagemService.buscarTodosAtivos());
+    public  ResponseEntity<List<ComentarioPostagemDTO>> buscarTodosComentariosAtivos(){
+        return ResponseEntity.ok(comentarioPostagemService.buscarTodosComentariosAtivos());
 
     }
     @GetMapping("/{id}")
