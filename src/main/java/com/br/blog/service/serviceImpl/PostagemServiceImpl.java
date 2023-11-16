@@ -69,7 +69,9 @@ public class PostagemServiceImpl implements PostagemService {
             postagemDTO.setDataAlteracao(new Date());
             Postagem postagem = new Postagem(postagemDTO);
             postagemRepository.saveAndFlush(postagem);
-
+            if(postagemDTO.getImagem() != null){
+               salvarImagemNoBanco(new ImagensPostagemDTO("jpg", postagemDTO.getId()), postagemDTO.getId(), postagemDTO.getImagem());
+            }
             return postagem.getId();
         } catch (ResponseStatusException e){
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao editar postagem.");
