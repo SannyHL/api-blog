@@ -80,6 +80,17 @@
 			<version>0.11.2</version>
 			<scope>runtime</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.16.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-imaging</artifactId>
+			<version>1.0-alpha2</version>
+		</dependency>
 	</dependencies>
 
 	<build>

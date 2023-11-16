@@ -19,7 +19,6 @@ public class UsuarioDTO {
     private String nome;
     private String email;
     private String senha;
-    private UsuarioRole role;
     private Date dataCriacao;
     private Boolean ativo;
 
@@ -29,5 +28,11 @@ public class UsuarioDTO {
         this.email = email;
         this.dataCriacao = dataCriacao;
         this.ativo = ativo;
+    }
+
+    public UsuarioDTO(Integer id, String nome, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
     }
 }

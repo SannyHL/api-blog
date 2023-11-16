@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UsuarioService {
 
-    Integer criarUsuario(Usuario usuario);
+    Integer criarUsuario(UsuarioDTO usuarioDto);
     Boolean existsUsuarioByEmail(String email);
     List<UsuarioDTO> buscarTodosUsuarios();
 }

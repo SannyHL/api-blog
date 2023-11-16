@@ -1,6 +1,7 @@
 package com.br.blog.model;
 
 import com.br.blog.enumeration.UsuarioRole;
+import com.br.blog.model.dto.UsuarioDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,12 +34,20 @@ public class Usuario implements UserDetails {
     private String email;
     @Column(name = "SENHA")
     private String senha;
-    @Column(name = "ROLE")
-    private UsuarioRole role;
     @Column(name = "DATA_CRIACAO")
     private Date dataCriacao;
     @Column(name = "ATIVO")
     private Boolean ativo;
+
+    public Usuario(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Usuario(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

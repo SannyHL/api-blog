@@ -20,13 +20,15 @@ public class UsuarioServiceImpl implements UsuarioService {
     UsuarioRepository usuarioRepository;
 
     @Override
-    public Integer criarUsuario(Usuario usuario) {
-        if(existsUsuarioByEmail(usuario.getEmail())){
+    public Integer criarUsuario(UsuarioDTO usuarioDto) {
+        if(existsUsuarioByEmail(usuarioDto.getEmail())){
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email já cadastrado no sistema.");
         }
         BCryptPasswordEncoder senhaCodificada = new BCryptPasswordEncoder();
-        usuario.setSenha(senhaCodificada.encode(usuario.getSenha()));
+        usuarioDto.setSenha(senhaCodificada.encode(usuarioDto.getSenha()));
+        Usuario usuario = new Usuario(usuarioDto.getNome(), usuarioDto.getEmail(), usuarioDto.getSenha());
         usuario.setDataCriacao(new Date());
+        usuario.setAtivo(true);
         usuarioRepository.saveAndFlush(usuario);
         return usuario.getId();
     }

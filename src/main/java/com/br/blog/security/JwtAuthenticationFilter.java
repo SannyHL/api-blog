@@ -1,9 +1,16 @@
 package com.br.blog.security;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.br.blog.model.Usuario;
+import com.br.blog.model.dto.UsuarioDTO;
 import com.br.blog.model.dto.UsuarioLoginDTO;
+import com.br.blog.utils.Utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,6 +29,7 @@ import java.util.Date;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
+
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -44,17 +52,19 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-                                            FilterChain chain, Authentication authResult) {
-        UserDetails userDetails = (UserDetails) authResult.getPrincipal();
+                                            FilterChain chain, Authentication authResult) throws IOException {
+        Usuario usuario = (Usuario) authResult.getPrincipal();
 
-        String token = Jwts.builder()
-                .setSubject(userDetails.getUsername())
-                .claim("id", ((Usuario) userDetails).getId())
-                .claim("nome", ((Usuario) userDetails).getNome())
-                .claim("email", ((Usuario) userDetails).getEmail())
-                .setExpiration(new Date(System.currentTimeMillis() + 864_000_000))
-                .signWith(SignatureAlgorithm.HS512, "ADDD51544662DSAA")
-                .compact();
-        response.addHeader("Authorization", "Bearer " + token);
+        String token = JWT.create()
+                .withSubject(usuario.getUsername())
+                .withSubject(usuario.getId().toString())
+                .withSubject(usuario.getEmail())
+                .withSubject(usuario.getNome())
+                .withExpiresAt(new Date(System.currentTimeMillis() + 864_000_000))
+                .sign(Algorithm.HMAC512(Utils.TOKEN_SENHA.getBytes()));
+        response.getWriter().write(token);
+        response.getWriter().flush();
     }
+
+
 }

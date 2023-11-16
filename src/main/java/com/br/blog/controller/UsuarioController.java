@@ -1,9 +1,7 @@
 package com.br.blog.controller;
 
-import com.br.blog.model.Usuario;
 import com.br.blog.model.dto.UsuarioDTO;
 import com.br.blog.service.UsuarioService;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +16,8 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<Integer> salvar(@RequestBody Usuario usuario){
-        return ResponseEntity.ok(usuarioService.criarUsuario(usuario));
+    public ResponseEntity<Integer> salvar(@RequestBody UsuarioDTO usuarioDto){
+        return ResponseEntity.ok(usuarioService.criarUsuario(usuarioDto));
     }
 
     @GetMapping
