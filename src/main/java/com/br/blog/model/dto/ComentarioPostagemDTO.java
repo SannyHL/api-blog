@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +25,7 @@ public class ComentarioPostagemDTO {
         this.id = id;
         this.texto = texto;
         this.usuarioId = usuarioId;
-        this.postagemId = postagemId
+        this.postagemId = postagemId;
         this.dataCriacao = dataCriacao;
         this.dataAlteracao = dataAlteracao;
         this.ativo = ativo;

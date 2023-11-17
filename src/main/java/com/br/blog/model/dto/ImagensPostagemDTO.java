@@ -8,7 +8,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class ImagensPostagemDTO {
 
     private Integer id;
@@ -16,6 +15,12 @@ public class ImagensPostagemDTO {
     private Integer postagemId;
 
     public ImagensPostagemDTO(String extensao, Integer postagemId) {
+        this.extensao = extensao;
+        this.postagemId = postagemId;
+    }
+
+    public ImagensPostagemDTO(Integer id, String extensao, Integer postagemId) {
+        this.id = id;
         this.extensao = extensao;
         this.postagemId = postagemId;
     }

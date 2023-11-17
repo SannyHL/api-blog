@@ -1,7 +1,6 @@
 package com.br.blog.model;
 
-import com.br.blog.enumeration.UsuarioRole;
-import com.br.blog.model.dto.UsuarioDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

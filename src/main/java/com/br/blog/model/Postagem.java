@@ -35,6 +35,7 @@ public class Postagem {
     private Boolean ativo;
 
     public Postagem(PostagemDTO postagemDTO) {
+        this.id = postagemDTO.getId();
         this.ativo = postagemDTO.getAtivo();
         this.texto = postagemDTO.getTexto();
         this.usuario = new Usuario(postagemDTO.getUsuarioId());

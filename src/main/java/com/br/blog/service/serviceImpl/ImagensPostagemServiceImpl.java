@@ -19,4 +19,9 @@ public class ImagensPostagemServiceImpl implements ImagensPostagemService {
         imagensPostagemRepository.saveAndFlush(imagensPostagem);
         return imagensPostagem.getId();
     }
+
+    @Override
+    public ImagensPostagemDTO buscarPorPostagemId(Integer postagemId) {
+        return imagensPostagemRepository.buscarPorPostagemId(postagemId);
+    }
 }
