@@ -59,6 +59,8 @@ $ git clone <https://github.com/SannyHL/api-blog.git>
 
 ➩ A pasta para guardar as imagens do post são criadas automaticamente dentro da pasta do usuário do sistema.
 
+➩ As tabelas são geradas automaticamente pelo spring.
+
 ```
 
 <br><h2>❤️ Imagens Sistema com front-end</h2>
