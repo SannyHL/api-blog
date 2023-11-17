@@ -20,7 +20,7 @@
 
 <br><h2>🛠 Algumas das tecnologias utilizadas na construção do projeto:</h2>
 
-- <b>Java 17</b> 
+- <b>Java 11</b> 
 - <b>Spring Framework</b>
 - <b>PostgreSQL</b>(banco de dados)
 
